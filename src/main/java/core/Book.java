@@ -1,9 +1,6 @@
-package hello;
+package core;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -13,10 +10,13 @@ import java.util.List;
 public class Book {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String authorName;
+    @Column(nullable = false)
     private String authorSurname;
     private String summary;
     private Integer publicationYear;
@@ -111,5 +111,12 @@ public class Book {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{ "
+                + "title: "+ title
+                + ", author: " + authorSurname +" " + authorName +" }";
     }
 }

@@ -1,9 +1,7 @@
-package hello;
+package core;
 
 import org.springframework.data.domain.*;
 import org.springframework.data.repository.*;
-
-import java.util.List;
 
 /**
  * Created by Shera on 29.03.2018.
@@ -11,6 +9,7 @@ import java.util.List;
 public interface BookRepository extends Repository<Book, Long> {
 
     Book findById(Long id);
+    Page<Book> findAll(Pageable pageable);
     Page<Book> findByTitle(String title, Pageable pageable);
     Page<Book> findByAuthorSurname(String AuthorSurname, Pageable pageable);
     Page<Book> findByGenre(Genre genre, Pageable pageable);
